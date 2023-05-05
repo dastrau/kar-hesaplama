@@ -14,7 +14,7 @@ def calculate():
     posetleme_maliyeti = 10
     reklam_maliyeti = 50
 
-    # Komisyon ve hizmet bedeli oranlarını tanımlayın
+    # Komisyon ve hizmet bedeli oranlarını tanımlayın sadhg
     komisyon_orani = 0.23
     hizmet_bedeli_orani = 0.08
 
