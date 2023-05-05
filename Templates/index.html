@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Kar Hesaplama Botu</title>
+<style>
+body {
+font-family: Arial, sans-serif;
+background-color: #f2f2f2;
+}
+h1 {
+text-align: center;
+color: #333;
+margin-top: 50px;
+font-size: 36px;
+}
+form {
+margin: 50px auto;
+padding: 20px;
+background: #fff;
+border-radius: 5px;
+box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+max-width: 400px;
+}
+label {
+display: block;
+margin-bottom: 10px;
+color: #333;
+}
+input[type="number"] {
+padding: 10px;
+border-radius: 5px;
+border: none;
+box-shadow: 0 0px 5px rgba(0,0,0,0.2);
+width: calc(100% - 20px);
+margin-bottom: 20px;
+font-size: 16px;
+}
+input[type="submit"] {
+background-color: #333;
+color: #fff;
+padding:10px 0;
+border: none;
+border-radius: 5px;
+font-size: 16px;
+cursor: pointer;
+transition: background-color 0.3s ease;
+width: 100%;
+}
+input[type="submit"]:hover {
+background-color: #555;
+}
+p {
+margin-top: 20px;
+margin-bottom: 20px;
+font-size: 18px;
+color: #333;
+text-align: center;
+background-color: #fff;
+border-radius: 5px;
+padding: 10px;
+box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+}
+</style>
+</head>
+<body>
+    
+<h1>Kar Hesaplama</h1>
+<form method="POST" action="{{ url_for('calculate') }}">
+<label for="alis_fiyati">Alış Fiyatı:</label>
+<input type="number" step="0.01" name="alis_fiyati" id="_fiyati" value="{{ request.form['alis_fiyati'] if request.form else '' }}" required>
+
+<label for="satis_fiyati">Satış Fiyatı:</label>
+<input type="number" step="0.01" name="satis_fiyati" id="satis_fiyati" value="{{ request.form['satis_fiyati'] if request.form else '' }}" required>
+
+<label for="kargo_maliyeti">Kargo Maliyeti:</label>
+<input type="number" step="0.01" name="kargo_maliyeti" id="kargo_maliyeti" value="{{ request.form['kargo_maliyeti'] if request.form else '' }}" required>
+
+<label for="posetleme_maliyeti">Poşetleme Maliyeti:</label>
+<input type="number" step="0.01" name="posetleme_maliyeti" id="posetleme_maliyeti" value="{{ request.form['posetleme_maliyeti'] if request.form else '' }}" required>
+
+<label for="reklam_maliyeti">Reklam Maliyeti:</label>
+<input type="number" step="0.01" name="reklam_maliyeti" id="reklam_maliyeti" value="{{ request.form['reklam_maliyeti'] if request.form else '' }}" required>
+
+<input type="submit" value="Hesapla">
+</form>
+
+{% if kar %}
+<p style="background-color: #fff; color: #333; border-radius: 5px; padding: 15px 0; margin-top: 20px; margin-bottom: 20px; box-shadow: 0px 0px 10px rgba(0,0,0,0.2); width: 30%; text-align: center; margin: 0 auto;">Kar: {{ kar | int }} TL</p>
+<p style="background-color: #fff; color: #333; border-radius: 5px; padding: 15px 0; margin-top: 20px; margin-bottom: 20px; box-shadow: 0px 0px 10px rgba(0,0,0,0.2); width: 30%; text-align: center; margin: 0 auto;">Kar Yüzdesi: {{ kar_yuzdesi | int }}%</p>
+{% endif %}
+
+
+</body>
+</html>
